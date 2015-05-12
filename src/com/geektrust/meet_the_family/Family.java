@@ -21,6 +21,13 @@ public class Family {
         people.add(person);
     }
 
+    public Person getFamilyHead(){
+        for (Person person : people) {
+            if(person.getName().equals(familyName)) return person;
+        }
+        return null;
+    }
+
     public List<Person> getAllPeople(){
         return people;
     }

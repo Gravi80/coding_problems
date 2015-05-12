@@ -12,30 +12,30 @@ import static org.junit.Assert.*;
 public class PersonTest {
 
     @Test
-    public void shouldCreateAPersonWithANameAndGender(){
+    public void shouldCreateAPersonWithANameAndGender() {
         Person person = new Person("Ravi", Gender.MALE);
         assertThat(person.getName(), IsEqual.equalTo("Ravi"));
     }
 
-//    @Test
-//    public void shouldInitializeRelativesListIfRelationNotPresent() {
-//        Person person = new Person("Ravi");
-//        Person brother = new Person("brother");
-//        person.addRelative(Relation.BROTHER,brother);
-//
-//        assertThat();
-//
-//    }
 
     @Test
     public void shouldReturnAllBrothersOfPerson() {
-        Person person = new Person("Ravi",Gender.MALE);
-        Person brother = new Person("brother",Gender.MALE);
-        Person sister = new Person("sister",Gender.FEMALE);
-        person.addRelative(Relation.BROTHER,brother);
-        person.addRelative(Relation.SISTER,sister);
+        Person person = new Person("Ravi", Gender.MALE);
+        Person brother = new Person("brother", Gender.MALE);
+        Person sister = new Person("sister", Gender.FEMALE);
+        person.addRelative(Relation.BROTHER, brother);
+        person.addRelative(Relation.SISTER, sister);
         List<Person> brothers = person.getAll(Relation.BROTHER);
 
-        assertThat(brothers.size(),IsEqual.equalTo(1));
+        assertThat(brothers.size(), IsEqual.equalTo(1));
+    }
+
+    @Test
+    public void shouldReturnSameBrothersCountForTwoBrothers() {
+        Person ish = new Person("Ish",Gender.MALE);
+        Person chit = new Person("Chit",Gender.MALE);
+        ish.addRelative(Relation.BROTHER, chit);
+
+        assertThat(chit.getAll(Relation.BROTHER).size(), IsEqual.equalTo(ish.getAll(Relation.BROTHER).size()));
     }
 }

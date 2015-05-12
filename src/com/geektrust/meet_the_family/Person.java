@@ -35,7 +35,7 @@ public class Person {
     }
 
     public List<Person> getAll(Relation relation) {
-        return relatives.get(relation);
+        return relatives.get(relation) == null ? new ArrayList<>() :relatives.get(relation);
     }
 
     private void initializePersonListFor(Relation relation) {

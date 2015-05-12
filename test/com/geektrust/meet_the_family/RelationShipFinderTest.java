@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 
 public class RelationShipFinderTest {
@@ -28,5 +29,15 @@ public class RelationShipFinderTest {
         List<String> actualBrothersName = relationShipFinder.find(Relation.BROTHER, "Ish");
 
         assertThat(actualBrothersName, IsEqual.equalTo(expectedNames));
+    }
+
+    @Test
+    public void shouldReturnEmptyListIfInvalidPersonNameIsPassed() {
+        Family shahFamily = TestData.generateShahFamily();
+
+        RelationShipFinder relationShipFinder = new RelationShipFinder(shahFamily);
+        List<String> actualBrothersName = relationShipFinder.find(Relation.BROTHER, "invalid");
+
+        assertTrue(actualBrothersName.isEmpty());
     }
 }

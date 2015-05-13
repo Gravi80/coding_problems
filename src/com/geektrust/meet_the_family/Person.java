@@ -38,7 +38,7 @@ public class Person {
     }
 
     public void alsoAddSelfAsARelative() {
-        recentlyAddedPerson.addRelative(recentlyAddedPersonRelation.getOppositeRelation(recentlyAddedPerson.gender), this);
+        recentlyAddedPerson.addRelative(recentlyAddedPersonRelation.getOppositeRelation(gender), this);
     }
 
     public List<Person> getAll(Relation relation) {

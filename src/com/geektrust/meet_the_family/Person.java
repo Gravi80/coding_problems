@@ -15,6 +15,10 @@ public class Person {
 
     private Map<Relation, List<Person>> relatives;
 
+    //    #TODO: Need to look for a cleaner approach
+    private Relation recentlyAddedPersonRelation;
+    private Person recentlyAddedPerson;
+
     public Person(String name, Gender gender) {
         this.name = name;
         this.gender = gender;
@@ -25,17 +29,20 @@ public class Person {
         return name;
     }
 
-    public Gender getGender() {
-        return gender;
+    public Person addRelative(Relation relation, Person relative) {
+        if (!isRelationPresent(relation)) initializePersonListFor(relation);
+        recentlyAddedPerson = relative;
+        recentlyAddedPersonRelation = relation;
+        relatives.get(relation).add(relative);
+        return this;
     }
 
-    public void addRelative(Relation relation, Person relative) {
-        if (!isRelationPresent(relation)) initializePersonListFor(relation);
-        relatives.get(relation).add(relative);
+    public void alsoAddSelfAsARelative() {
+        recentlyAddedPerson.addRelative(recentlyAddedPersonRelation.getOppositeRelation(recentlyAddedPerson.gender), this);
     }
 
     public List<Person> getAll(Relation relation) {
-        return relatives.get(relation) == null ? new ArrayList<>() :relatives.get(relation);
+        return relatives.get(relation) == null ? new ArrayList<>() : relatives.get(relation);
     }
 
     private void initializePersonListFor(Relation relation) {

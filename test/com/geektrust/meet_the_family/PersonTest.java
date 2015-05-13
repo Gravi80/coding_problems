@@ -34,8 +34,27 @@ public class PersonTest {
     public void shouldReturnSameBrothersCountForTwoBrothers() {
         Person ish = new Person("Ish",Gender.MALE);
         Person chit = new Person("Chit",Gender.MALE);
-        ish.addRelative(Relation.BROTHER, chit);
+        ish.addRelative(Relation.BROTHER, chit).alsoAddSelfAsARelative();
 
         assertThat(chit.getAll(Relation.BROTHER).size(), IsEqual.equalTo(ish.getAll(Relation.BROTHER).size()));
     }
+
+    @Test
+    public void shouldAddSelfAsABrotherOfHisSister() {
+        Person ish = new Person("Ish",Gender.MALE);
+        Person satya = new Person("Satya",Gender.FEMALE);
+
+        ish.addRelative(Relation.SISTER,satya).alsoAddSelfAsARelative();
+        assertThat(satya.getAll(Relation.BROTHER).size(),IsEqual.equalTo(1));
+    }
+
+    @Test
+    public void shouldAddSelfAsAHusbandOfHisWife() {
+        Person kingShah = new Person("Shah", Gender.MALE);
+        Person queenAnga = new Person("Anga", Gender.FEMALE);
+
+        kingShah.addRelative(Relation.WIFE,queenAnga).alsoAddSelfAsARelative();
+        assertThat(queenAnga.getAll(Relation.HUSBAND).size(),IsEqual.equalTo(1));
+    }
+
 }

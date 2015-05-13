@@ -9,17 +9,16 @@ import com.geektrust.meet_the_family.helpers.Relation;
 public class TestData {
 
     public static Family generateShahFamily() {
-        Family family = new Family("Shah");
+        Family family = new Family("Shan");
 
-        Person kingShah = new Person("Shah", Gender.MALE);
+        Person kingShah = new Person("Shan", Gender.MALE);
         Person queenAnga = new Person("Anga", Gender.FEMALE);
         Person ish = new Person("Ish", Gender.MALE);
         Person chit = new Person("Chit", Gender.MALE);
         Person vich = new Person("Vich", Gender.MALE);
         Person satya = new Person("Satya", Gender.FEMALE);
 
-        kingShah.addRelative(Relation.WIFE, queenAnga);
-        queenAnga.addRelative(Relation.HUSBAND, kingShah);
+        kingShah.addRelative(Relation.WIFE, queenAnga).alsoAddSelfAsARelative();
         ish.addRelative(Relation.BROTHER, chit);
         ish.addRelative(Relation.BROTHER, vich);
         ish.addRelative(Relation.SISTER, satya);

@@ -13,6 +13,6 @@ public class FamilyTest {
     public void shouldReturnHeadOfFamily(){
         Family shahFamily = TestData.generateShahFamily();
         Person familyHead = shahFamily.getFamilyHead();
-        assertThat(familyHead.getName(), IsEqual.equalTo("Shah"));
+        assertThat(familyHead.getName(), IsEqual.equalTo("Shan"));
     }
 }

@@ -40,4 +40,17 @@ public class RelationShipFinderTest {
 
         assertTrue(actualBrothersName.isEmpty());
     }
+
+    @Test
+    public void shouldReturnHusbandOfQueenAnga(){
+        Family shahFamily = TestData.generateShahFamily();
+        RelationShipFinder relationShipFinder = new RelationShipFinder(shahFamily);
+
+        ArrayList<String> expectedName = new ArrayList<>();
+        expectedName.add("Shan");
+
+        List<String> husbandName = relationShipFinder.find(Relation.HUSBAND, "Anga");
+        assertThat(husbandName, IsEqual.equalTo(expectedName));
+
+    }
 }

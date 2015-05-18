@@ -1,8 +1,8 @@
 package com.geektrust.meet_the_family;
 
 import com.geektrust.meet_the_family.helpers.Gender;
-import com.geektrust.meet_the_family.helpers.Relation;
 import org.hamcrest.core.IsEqual;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
@@ -11,21 +11,30 @@ import static org.junit.Assert.assertThat;
 
 public class PersonTest {
 
+    private Person kingShah;
+    private Person queenAnga;
+
+    @Before
+    public void setUp() throws Exception {
+        kingShah = new Person("Shan", Gender.MALE);
+        queenAnga = new Person("Anga", Gender.FEMALE);
+
+    }
+
     @Test
     public void shouldCreateAPersonWithANameAndGender() {
         Person person = new Person("Ravi", Gender.MALE);
         assertThat(person.getName(), IsEqual.equalTo("Ravi"));
     }
 
-
     @Test
     public void shouldReturnAllBrothersOfPerson() {
-        Person person = new Person("Ravi", Gender.MALE);
-        Person brother = new Person("brother", Gender.MALE);
-        Person sister = new Person("sister", Gender.FEMALE);
-        person.addRelative(Relation.BROTHER, brother);
-        person.addRelative(Relation.SISTER, sister);
-        List<Person> brothers = person.getAll(Relation.BROTHER);
+        Person ish = new Person("Ish", Gender.MALE);
+        Person chit = new Person("Chit", Gender.MALE);
+        Person satya = new Person("Satya", Gender.FEMALE);
+
+        kingShah.setSpouse(queenAnga).addChild(ish).addChild(chit).addChild(satya);
+        List<Person> brothers = ish.getBrothers();
 
         assertThat(brothers.size(), IsEqual.equalTo(1));
     }
@@ -34,51 +43,45 @@ public class PersonTest {
     public void shouldReturnSameBrothersCountForTwoBrothers() {
         Person ish = new Person("Ish", Gender.MALE);
         Person chit = new Person("Chit", Gender.MALE);
-        ish.addRelative(Relation.BROTHER, chit).alsoAddSelfAsARelative();
 
-        assertThat(chit.getAll(Relation.BROTHER).size(), IsEqual.equalTo(ish.getAll(Relation.BROTHER).size()));
+        kingShah.setSpouse(queenAnga).addChild(ish).addChild(chit);
+
+        assertThat(chit.getBrothers().size(), IsEqual.equalTo(ish.getBrothers().size()));
     }
 
     @Test
-    public void shouldAddSelfAsABrotherOfHisSister() {
+    public void shouldReturnBrotherOfASister() {
         Person ish = new Person("Ish", Gender.MALE);
         Person satya = new Person("Satya", Gender.FEMALE);
 
-        ish.addRelative(Relation.SISTER, satya).alsoAddSelfAsARelative();
-        assertThat(satya.getAll(Relation.BROTHER).size(), IsEqual.equalTo(1));
+        kingShah.setSpouse(queenAnga).addChild(ish).addChild(satya);
+
+        assertThat(satya.getBrothers().size(), IsEqual.equalTo(1));
     }
 
     @Test
     public void shouldAddSelfAsAHusbandOfHisWife() {
-        Person kingShah = new Person("Shah", Gender.MALE);
-        Person queenAnga = new Person("Anga", Gender.FEMALE);
+        kingShah.setSpouse(queenAnga);
 
-        kingShah.addRelative(Relation.WIFE, queenAnga).alsoAddSelfAsARelative();
-
-        assertThat(queenAnga.getAll(Relation.HUSBAND).size(), IsEqual.equalTo(1));
+        assertThat(queenAnga.getSpouse().getName(), IsEqual.equalTo("Shan"));
     }
 
     @Test
-    public void shouldAddSelfAsSisterOfHerSister() {
+    public void shouldGetAllSister() {
         Person satya = new Person("Satya", Gender.FEMALE);
         Person satya_sister = new Person("Satya Sister", Gender.FEMALE);
+        kingShah.addChild(satya).addChild(satya_sister);
 
-        satya.addRelative(Relation.SISTER, satya_sister).alsoAddSelfAsARelative();
-
-        assertThat(satya_sister.getAll(Relation.SISTER).size(), IsEqual.equalTo(1));
+        assertThat(satya_sister.getSisters().size(), IsEqual.equalTo(1));
     }
 
     @Test
-    public void shouldAssociateRelatives(){
-        Person kingShah = new Person("Shan", Gender.MALE);
-        Person queenAnga = new Person("Anga", Gender.FEMALE);
+    public void shouldReturnSameChildrensForSpouse(){
         Person ish = new Person("Ish", Gender.MALE);
 
-        kingShah.addRelative(Relation.SON, ish).alsoAddSelfAsARelative();
-        kingShah.addRelative(Relation.WIFE, queenAnga).alsoAddSelfAsARelative();
+        kingShah.setSpouse(queenAnga).addChild(ish);
 
-        assertThat(queenAnga.getAll(Relation.SON).size(), IsEqual.equalTo(1));
-//        assertThat(ish.getAll(Relation.MOTHER).size(), IsEqual.equalTo(1));
+        assertThat(queenAnga.getChildrens(), IsEqual.equalTo(kingShah.getChildrens()));
     }
 
 }

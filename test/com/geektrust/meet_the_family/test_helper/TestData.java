@@ -18,20 +18,20 @@ public class TestData {
         Person vich = new Person("Vich", Gender.MALE);
         Person satya = new Person("Satya", Gender.FEMALE);
 
-        kingShah.addRelative(Relation.WIFE, queenAnga).alsoAddSelfAsARelative();
-        kingShah.addRelative(Relation.SON, ish).alsoAddSelfAsARelative();
-        kingShah.addRelative(Relation.SON, chit).alsoAddSelfAsARelative();
-        kingShah.addRelative(Relation.SON, vich).alsoAddSelfAsARelative();
-        kingShah.addRelative(Relation.DAUGHTER, satya).alsoAddSelfAsARelative();
-
-        queenAnga.addRelative(Relation.SON, ish).alsoAddSelfAsARelative();
-        queenAnga.addRelative(Relation.SON, chit).alsoAddSelfAsARelative();
-        queenAnga.addRelative(Relation.SON, vich).alsoAddSelfAsARelative();
-        queenAnga.addRelative(Relation.DAUGHTER, satya).alsoAddSelfAsARelative();
-
-        ish.addRelative(Relation.BROTHER, chit).alsoAddSelfAsARelative();
-        ish.addRelative(Relation.BROTHER, vich).alsoAddSelfAsARelative();
-        ish.addRelative(Relation.SISTER, satya).alsoAddSelfAsARelative();
+//        kingShah.addRelative(Relation.WIFE, queenAnga).alsoAddSelfAsARelative();
+//        kingShah.addRelative(Relation.SON, ish).alsoAddSelfAsARelative();
+//        kingShah.addRelative(Relation.SON, chit).alsoAddSelfAsARelative();
+//        kingShah.addRelative(Relation.SON, vich).alsoAddSelfAsARelative();
+//        kingShah.addRelative(Relation.DAUGHTER, satya).alsoAddSelfAsARelative();
+//
+//        queenAnga.addRelative(Relation.SON, ish).alsoAddSelfAsARelative();
+//        queenAnga.addRelative(Relation.SON, chit).alsoAddSelfAsARelative();
+//        queenAnga.addRelative(Relation.SON, vich).alsoAddSelfAsARelative();
+//        queenAnga.addRelative(Relation.DAUGHTER, satya).alsoAddSelfAsARelative();
+//
+//        ish.addRelative(Relation.BROTHER, chit).alsoAddSelfAsARelative();
+//        ish.addRelative(Relation.BROTHER, vich).alsoAddSelfAsARelative();
+//        ish.addRelative(Relation.SISTER, satya).alsoAddSelfAsARelative();
 
         family.addPerson(kingShah);
         family.addPerson(queenAnga);

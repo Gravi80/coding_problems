@@ -16,13 +16,13 @@ public class RelationShipFinder {
 
     public List<String> find(Relation relation, String person_name) {
         List<String> relativesNames = new ArrayList<>();
-        Person person = findPersonWithName(person_name);
-        if (person != null) {
-            List<Person> relatives = person.getAll(relation);
-            for (Person relative : relatives) {
-                relativesNames.add(relative.getName());
-            }
-        }
+//        Person person = findPersonWithName(person_name);
+//        if (person != null) {
+//            List<Person> relatives = person.getAll(relation);
+//            for (Person relative : relatives) {
+//                relativesNames.add(relative.getName());
+//            }
+//        }
         return relativesNames;
     }
 

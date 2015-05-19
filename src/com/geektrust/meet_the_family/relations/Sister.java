@@ -7,19 +7,23 @@ import com.geektrust.meet_the_family.helpers.Gender;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Brother implements Relation {
-    public List<Person> getFor(Person person){
-        return getBrothersOf(person);
+
+public class Sister implements Relation {
+
+    @Override
+    public List<Person> getFor(Person person) {
+        return getSistersOf(person);
     }
 
-    private List<Person> getBrothersOf(Person person) {
-        ArrayList<Person> brothers = new ArrayList<>();
+    private List<Person> getSistersOf(Person person) {
+        ArrayList<Person> sisters = new ArrayList<>();
         Parents parents = person.getParents();
-        if (parents ==null) return brothers;
+        if (parents==null) return sisters;
         List<Person> childrens = parents.getFather().getChildrens();
         for (Person children : childrens) {
-            if ((children.getGender() == Gender.MALE) && children != person) brothers.add(children);
+            if (children.getGender() == Gender.FEMALE && children != person ) sisters.add(children);
         }
-        return brothers;
+        return sisters;
     }
+
 }

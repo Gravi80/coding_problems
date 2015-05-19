@@ -53,30 +53,16 @@ public class Person {
         return parents;
     }
 
+    public Gender getGender() {
+        return gender;
+    }
+
     public String getName() {
         return name;
     }
 
     public Person getSpouse() {
         return spouse;
-    }
-
-    public List<Person> getBrothers() {
-        ArrayList<Person> brothers = new ArrayList<>();
-        List<Person> childrens = parents.getFather().childrens;
-        for (Person children : childrens) {
-            if ((children.gender == Gender.MALE) && children != this) brothers.add(children);
-        }
-        return brothers;
-    }
-
-    public List<Person> getSisters() {
-        ArrayList<Person> sisters = new ArrayList<>();
-        List<Person> childrens = parents.getFather().childrens;
-        for (Person children : childrens) {
-            if (children.gender == Gender.FEMALE && children != this ) sisters.add(children);
-        }
-        return sisters;
     }
 
     private boolean isChildExists(Person parent,Person child){

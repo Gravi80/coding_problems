@@ -6,5 +6,5 @@ import com.geektrust.meet_the_family.Person;
 import java.util.List;
 
 public interface Relation {
-    public List<Person> getAll(Person person);
+    public List<Person> getFor(Person person);
 }

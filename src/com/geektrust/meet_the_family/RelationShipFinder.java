@@ -17,4 +17,9 @@ public class RelationShipFinder {
         }
         return relativesNames;
     }
+
+
+    public List<String> getMothersWithMostGirlChild() {
+        return null;
+    }
 }

@@ -1,24 +1,27 @@
-package com.geektrust.meet_the_family;
+package com.geektrust.family_tree.families;
 
 
-import com.geektrust.meet_the_family.helpers.Gender;
+import com.geektrust.family_tree.Person;
+import com.geektrust.family_tree.constants.Gender;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class ShanFamily {
+public class ShanFamily implements Family{
 
-    private Map<String, Person> personMap;
+    private Map<String, Person> peopleMap;
     private Person kingShan, queenAnga, ish, chit, vich, satya, ambi, lika, vyan, drita, jaya, vrita, jata, driya, mnu,
             vila, jnki, chika, kpila, lavnya, gru, satvy, asva, savya, krpi, saayan, mina, kriya, misa;
 
     public ShanFamily() {
-        this.personMap = new HashMap<>();
+        this.peopleMap = new HashMap<>();
     }
 
+    @Override
     public void generatePeople() {
         kingShan = addNewPerson("Shan", Gender.MALE);
-        personMap.put("Shan",kingShan);
         queenAnga = addNewPerson("Anga", Gender.FEMALE);
         ish = addNewPerson("Ish", Gender.MALE);
         chit = addNewPerson("Chit", Gender.MALE);
@@ -51,6 +54,7 @@ public class ShanFamily {
         misa = addNewPerson("Misa", Gender.MALE);
     }
 
+    @Override
     public ShanFamily associatePeople() {
         if (kingShan == null) return this;
         kingShan.setSpouse(queenAnga).addChild(ish).addChild(chit).addChild(vich).addChild(satya);
@@ -71,14 +75,30 @@ public class ShanFamily {
         return this;
     }
 
-//    #NOTE: This implementation is done assuming each member will have unique name, as it is in the family tree.
+//    # NOTE: This implementation is done assuming each member will have unique name, as it is in the family tree.
+    @Override
     public Person findPersonWithName(String name) {
-        return personMap.get(name);
+        return peopleMap.get(name);
     }
+
+    @Override
+    public List<Person> femaleMembers() {
+        ArrayList<Person> femaleMembers = new ArrayList<>();
+        for (Person person : peopleMap.values()) {
+            if(person.getGender()==Gender.FEMALE) femaleMembers.add(person);
+        }
+        return femaleMembers;
+    }
+
+    @Override
+    public Person getHeadOfFamily() {
+        return kingShan;
+    }
+
 
     private Person addNewPerson(String name,Gender gender){
         Person person = new Person(name,gender);
-        personMap.put(name,person);
+        peopleMap.put(name, person);
         return person;
     }
 

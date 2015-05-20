@@ -1,8 +1,8 @@
-package com.geektrust.meet_the_family.relations;
+package com.geektrust.family_tree.relations;
 
 
-import com.geektrust.meet_the_family.Person;
-import com.geektrust.meet_the_family.helpers.Gender;
+import com.geektrust.family_tree.Person;
+import com.geektrust.family_tree.constants.Gender;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,5 +14,10 @@ public class Husband implements Relation {
         if(person.getGender()== Gender.MALE) return husband;
         husband.add(person.getSpouse());
         return husband;
+    }
+
+    @Override
+    public String name() {
+        return "Husband";
     }
 }

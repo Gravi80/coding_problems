@@ -1,7 +1,9 @@
 package com.geektrust.meet_the_family.relations;
 
-import com.geektrust.meet_the_family.Person;
-import com.geektrust.meet_the_family.helpers.Gender;
+import com.geektrust.family_tree.Person;
+import com.geektrust.family_tree.constants.Gender;
+import com.geektrust.family_tree.relations.Brother;
+import com.geektrust.family_tree.relations.Relation;
 import org.hamcrest.core.IsEqual;
 import org.junit.Before;
 import org.junit.Test;

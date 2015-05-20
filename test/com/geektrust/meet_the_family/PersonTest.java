@@ -1,11 +1,10 @@
 package com.geektrust.meet_the_family;
 
-import com.geektrust.meet_the_family.helpers.Gender;
+import com.geektrust.family_tree.Person;
+import com.geektrust.family_tree.constants.Gender;
 import org.hamcrest.core.IsEqual;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.List;
 
 import static org.junit.Assert.assertThat;
 

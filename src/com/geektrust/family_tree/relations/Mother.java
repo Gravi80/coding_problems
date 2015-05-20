@@ -1,8 +1,7 @@
-package com.geektrust.meet_the_family.relations;
+package com.geektrust.family_tree.relations;
 
 
-import com.geektrust.meet_the_family.Person;
-import com.geektrust.meet_the_family.helpers.Gender;
+import com.geektrust.family_tree.Person;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,5 +14,10 @@ public class Mother implements Relation {
         if (person.getParents() == null || person.getParents().getMother() == null) return mother;
         mother.add(person.getParents().getMother());
         return mother;
+    }
+
+    @Override
+    public String name() {
+        return "Mother";
     }
 }

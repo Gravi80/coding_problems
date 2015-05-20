@@ -1,6 +1,6 @@
-package com.geektrust.meet_the_family;
+package com.geektrust.family_tree;
 
-import com.geektrust.meet_the_family.helpers.Gender;
+import com.geektrust.family_tree.constants.Gender;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,7 @@
-package com.geektrust.meet_the_family.relations;
+package com.geektrust.family_tree.relations;
 
 
-import com.geektrust.meet_the_family.Person;
+import com.geektrust.family_tree.Person;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +15,11 @@ public class GrandChildren implements Relation {
         }
 
         return grandChildrens;
+    }
+
+    @Override
+    public String name() {
+        return "Grand Children";
     }
 
 }

@@ -1,4 +1,4 @@
-package com.geektrust.meet_the_family;
+package com.geektrust.family_tree;
 
 
 public class Parents {

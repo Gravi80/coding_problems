@@ -16,38 +16,3 @@ Expected Output: Chit, Vich
 
 
 
-
-
-
-
-
-You are now studying in IIN and have to follow the curriculum. Here is how the curriculum is structured.
-
-There are a total of n faculties in this institute. The ith faculty has mi different courses under his mentor-ship. Every course under a particular faculty might have some topics in common. Hence each course, under each faculty, have been given "Conceptual points", which indicate the level of toughness of that course. To qualify a course x, taught under faculty i, you first have to qualify all the courses y, taught under same faculty, such that the Conceptual Points of all y's is less than Conceptual points of x.
-
-As per the rule, you have to complete every course that university offers, one at a time. Also, at any moment, when you select a new course, you will select only from those courses, which you can qualify at that time.
-
-You can choose any course, under any faculty, in any semester, as long as above condition holds. A schedule is valid if all the courses taken as per the schedule do not violate the conditions mentioned above.
-
-Note that all the courses are distinct and any 2 courses under different faculties have no dependency whatsoever.
-
-Find total number of possible valid schedules. As answer can be large, output it modulo 109 + 7.
-
-Input:
-
-The first line of input will contain an integer n, the number of faculties. Next n lines each will first contain a letter mi, the number of courses under faculty i. The mi space separated integers will follow in the same line, where jth integer xj will indicate the Conceptual Level of jth course under ith faculty.
-
-Output:
-
-Output the required answer modulo 109 + 7.
-
-Constraints:
-
-1 ≤ Total number of university courses ≤ 105
-1 ≤ n ≤ 105 
-1 ≤ m ≤ 105 
-1 ≤ xj ≤ 105 for all i's
-
-
-
-
